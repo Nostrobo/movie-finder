@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import MFHeader from './components/MFHeader/MFHeader';
+import MFBody from './components/MFBody/MFBody';
+import MFFooter from './components/MFFooter/MFFooter';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="mf-app-background">
+      <div className="mf-app-container">
+        <MFHeader className="mf-header" />
+        <MFBody className="mf-body" />
+        <MFFooter className="mf-footer" />
+      </div>
     </div>
   );
 }

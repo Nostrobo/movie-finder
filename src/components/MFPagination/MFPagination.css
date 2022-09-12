@@ -1,0 +1,17 @@
+.mf-pagination-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+.mf-pagination-item{
+    padding : 8px 0px;
+    width: 36px;
+    margin:8px;
+    border: 1px solid var(--placeholder-color);
+    text-align: center;
+    border-radius: 8px;
+    background-color: var(--main-bg-color);
+    color: #fff;
+    cursor: pointer;
+}

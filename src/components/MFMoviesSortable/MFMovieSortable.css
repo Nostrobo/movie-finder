@@ -1,0 +1,9 @@
+.mf-movie-sortable-container{
+    margin-top: 32px;
+}
+
+.mf-movie-filtered-list-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}

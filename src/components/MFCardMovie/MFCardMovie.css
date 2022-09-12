@@ -1,0 +1,20 @@
+.mf-movie-card-container{
+    margin-top: 16px;
+    margin-right: 16px;
+    display: inline-block;
+}
+.mf-movie-img{
+    width: 100%;
+    border-radius: 16px;
+}
+
+.mf-movie-infos{
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    word-break: break-word;
+}
+.mf-movie-infos>span{
+    word-break: break-word;
+    white-space: normal;
+}

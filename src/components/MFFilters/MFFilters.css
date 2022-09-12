@@ -1,0 +1,29 @@
+.mf-sort-container{
+margin: 16px 0;
+}
+
+.mf-sort-container>select{
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #263755;
+    border: none;
+    border: 1px solid;
+    color: var(--placeholder-color);
+    margin-left: 16px;
+}
+
+.mf-filter-container{
+    margin: 0 0 16px 0 ;
+    }
+
+    
+@media screen and (min-width: 760px) { 
+    .mf-filters-sort-container{
+      display: flex;
+      margin-top: 16px;
+      /* justify-content: center; */
+    }
+    .mf-sort-container{
+        margin: 0 ;
+        }
+  }
