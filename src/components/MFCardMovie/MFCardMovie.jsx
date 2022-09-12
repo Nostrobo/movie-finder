@@ -27,7 +27,7 @@ const MFCardMovie = ({ movie, size }) => {
 
     return (
         <div className="mf-movie-card-container" style={{ 'width': width }}>
-            <img className="mf-movie-img" src={posterPath} alt="" />
+            <img className="mf-movie-img" src={posterPath} alt="" loading="lazy"/>
             <div className="mf-movie-infos">
                 <span>{movie.title}</span>
                 <span>{movieDate}</span>

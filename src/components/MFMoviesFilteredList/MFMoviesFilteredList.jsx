@@ -15,7 +15,7 @@ const MFMoviesFilteredList = ({ movies }) => {
         <>
             {movies.map((movie, key) => {
                 return (
-                        <MFCardMovie movie={movie} size={cardSize} key={key} />
+                        <MFCardMovie movie={movie} size={cardSize} key={"movie"+key} />
                     )
             })
 

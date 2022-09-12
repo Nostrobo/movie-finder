@@ -58,7 +58,7 @@ const MFCardTopMovie = () => {
                             {topMoviesDesktop.length &&
                                 <>
                                     {topMoviesDesktop[sliderIndex].map((movie, key) => (
-                                        <MFCardMovie key={key} movie={movie} size='xs' />))}
+                                        <MFCardMovie key={"topMovieDesktop"+key} movie={movie} size='xs' />))}
                                 </>
                             }
                             <button type="button" className="mf-slider-button" onClick={handleNext}>
@@ -67,7 +67,7 @@ const MFCardTopMovie = () => {
                         </div>
 
                         : topMovies.map((movie, key) => (
-                            <MFCardMovie key={key} movie={movie} size='s' />
+                            <MFCardMovie key={"topMovie"+key} movie={movie} size='s' />
 
                         )
 

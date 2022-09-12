@@ -12,7 +12,7 @@ const MFPagination = ({ amountPage, pageSelected, handleSetPageSelected }) => {
             }
             {[...Array(10)].map((pageNumber, key) => {
                 return (
-                    <button type="button" className="mf-pagination-item" key={key} onClick={(e)=>handleSetPageSelected(key + 1)}>
+                    <button type="button" className="mf-pagination-item" key={"pagination"+key} onClick={(e)=>handleSetPageSelected(key + 1)}>
                         {key + 1}
                     </button>
                 )

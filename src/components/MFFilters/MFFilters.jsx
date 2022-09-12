@@ -33,7 +33,7 @@ const MFFilters = ({handleSetSortBy}) => {
                 <label htmlFor="genre-filter">Filtrer par:</label>
                 <select name="genre-filter" id="genre-filter" defaultValue={{ label: "Genre", value: 0 }} onChange={e => console.log(e.target.value)}>
                     {genresOptions.map((genre, key) => {
-                        return <option value={genre.name} key={key}>{genre.name}</option>
+                        return <option value={genre.name} key={"genre"+key}>{genre.name}</option>
                     })}
                 </select>
             </div>
