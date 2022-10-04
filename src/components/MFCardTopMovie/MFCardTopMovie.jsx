@@ -1,10 +1,10 @@
 import "./MFCardTopMovie.css";
-import MFCardMovie from "../MFCardMovie/MFCardMovie";
-import { useEffect, useState } from "react";
+// import MFCardMovie from "../MFCardMovie/MFCardMovie";
+import React, { useEffect, useState, Suspense } from "react";
 import axios from "axios";
 import previousArrow from "../../assets/paginationpreviousarrow.svg"
 import nextArrow from "../../assets/paginationnextarrow.svg"
-
+const MFCardMovie = React.lazy(() => import("../MFCardMovie/MFCardMovie"))
 
 const MFCardTopMovie = () => {
     let topMovieLength = 10;
@@ -34,16 +34,18 @@ const MFCardTopMovie = () => {
             })
     }, []);
 
-    const handlePrevious = () => {
-        if(sliderIndex - 1 >= 0) setSliderIndex(sliderIndex - 1)
+    const handlePrevious = (e) => {
+        e.preventDefault()
+        if (sliderIndex - 1 >= 0) setSliderIndex(sliderIndex - 1)
     }
 
-    const handleNext = () => {
-        if(sliderIndex + 1 < topMoviesDesktop.length) setSliderIndex(sliderIndex + 1)
+    const handleNext = (e) => {
+        e.preventDefault()
+        if (sliderIndex + 1 < topMoviesDesktop.length) setSliderIndex(sliderIndex + 1)
     }
 
     return (
-        <div className="mf-top-movies-container">
+        <section className="mf-top-movies-container">
             <h2>Les 10 meilleurs films</h2>
             <div className="mf-top-movies-slider">
                 {isLoading
@@ -52,29 +54,41 @@ const MFCardTopMovie = () => {
                     [(viewportWidth > 760
                         ?
                         <div className="mf-slider-container-desktop">
-                            <button type="button" className="mf-slider-button" onClick={handlePrevious}>
-                                <img src={previousArrow} alt="Previous" />
-                            </button>
+                            <div className="mf-slider-button-container">
+                                {sliderIndex !== 0 &&
+                                    <button type="button" className="mf-slider-button" onClick={handlePrevious}>
+                                        <img src={previousArrow} alt="Previous" />
+                                    </button>
+                                }
+                            </div>
                             {topMoviesDesktop.length &&
                                 <>
                                     {topMoviesDesktop[sliderIndex].map((movie, key) => (
-                                        <MFCardMovie key={"topMovieDesktop"+key} movie={movie} size='xs' />))}
+                                        <Suspense fallback={"loaging..."}>
+                                            <MFCardMovie key={movie.title} movie={movie} size='s' />
+                                        </Suspense>))}
                                 </>
                             }
-                            <button type="button" className="mf-slider-button" onClick={handleNext}>
-                                <img src={nextArrow} alt="Next" />
-                            </button>
+                            <div className="mf-slider-button-container">
+                                {sliderIndex !== topMoviesDesktop.length -1 &&
+                                    <button type="button" className="mf-slider-button" onClick={handleNext}>
+                                        <img src={nextArrow} alt="Next" />
+                                    </button>
+                                }
+                            </div>
                         </div>
 
                         : topMovies.map((movie, key) => (
-                            <MFCardMovie key={"topMovie"+key} movie={movie} size='s' />
+                            <Suspense fallback={"loaging..."}>
+                                <MFCardMovie key={"topMovie" + key.toString()} movie={movie} size='s' />
+                            </Suspense>
 
                         )
 
                         ))]
                 }
             </div>
-        </div>
+        </section>
     )
 }
 

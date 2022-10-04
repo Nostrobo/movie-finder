@@ -10,6 +10,7 @@ const MFMoviesFilteredList = ({ movies }) => {
     } else {
         cardSize = 'm'
     }
+    
 
     return (
         <>

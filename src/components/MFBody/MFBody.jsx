@@ -4,10 +4,10 @@ import MFMovieSortable from "../MFMoviesSortable/MFMovieSortable"
 
 const MFBody = () => {
     return (
-        <>
+        <main>
             <MFCardTopMovie />
             <MFMovieSortable />
-        </>
+        </main>
     )
 }
 

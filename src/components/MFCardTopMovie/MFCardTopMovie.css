@@ -5,25 +5,43 @@
 
 .mf-top-movies-slider {
     overflow-x: scroll;
-    white-space: nowrap;
+    overflow-y: hidden;
+    /* white-space: nowrap; */
+    display: flex;
+
 }
 
 .mf-slider-container-desktop {
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
 
 }
+.mf-slider-button-container{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
 
 .mf-slider-button {
-    padding: 24px 30px;
+    transition: .3s;
     margin: 16px;
     text-align: center;
     border-radius: 100%;
     cursor: pointer;
     color: var(--placeholder-color);
     background-color: var(--main-bg-color);
+    border: none;
+}
+.mf-slider-button:hover {
+    background-color: rgba(255, 255, 255,.1);
+    box-shadow: 0 10px 50px rgba(0,0,0,0.9);
+    padding: 24px 30px;
     border: 2px solid var(--placeholder-color);
+
+
+
 }
 
 

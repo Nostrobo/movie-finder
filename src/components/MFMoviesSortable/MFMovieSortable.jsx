@@ -23,7 +23,7 @@ const MFMovieSortable = () => {
         switch (value){
             case  'alphabeticOrder':
                 newFilter = {
-                    type:'title',
+                    type:'original_title',
                     order:"desc"
                 }
                 setSortBy(newFilter)
@@ -69,16 +69,12 @@ const MFMovieSortable = () => {
         <div className="mf-movie-sortable-container">
             <h2>Tous les films</h2>
             <MFFilters handleSetSortBy={handleSetSortBy}/>
-            {isLoading
-                ? <span>Chargement</span>
-                : (
-                    <>
+          
                     <div className="mf-movie-filtered-list-container">
                         <MFMoviesFilteredList movies={movies} />
                     </div>
                         <MFPagination amountPage={amountPage} pageSelected={pageSelected} handleSetPageSelected={handleSetPageSelected}/>
-                    </>)
-            }
+            
         </div>
     )
 }
