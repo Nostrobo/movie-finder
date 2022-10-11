@@ -6,7 +6,6 @@
 .mf-top-movies-slider {
     overflow-x: scroll;
     overflow-y: hidden;
-    /* white-space: nowrap; */
     display: flex;
 
 }
@@ -26,6 +25,8 @@
 
 .mf-slider-button {
     transition: .3s;
+    padding: 16px 24px;
+
     margin: 16px;
     text-align: center;
     border-radius: 100%;
@@ -35,18 +36,25 @@
     border: none;
 }
 .mf-slider-button:hover {
-    background-color: rgba(255, 255, 255,.1);
-    box-shadow: 0 10px 50px rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,.2);
+    box-shadow: 0 10px 8px rgba(0,0,0,0.9), inset 0 0px 16px var(--placeholder-color);
     padding: 24px 30px;
-    border: 2px solid var(--placeholder-color);
+    /* border: 2px solid var(--placeholder-color); */
 
 
 
+}
+.mf-slider-button:focus{
+    background-color: rgba(0,0,0,.2);
+    box-shadow: 0 10px 8px rgba(0,0,0,0.9), inset 0 0px 16px var(--placeholder-color);
+    padding: 24px 30px;
 }
 
 
 @media screen and (min-width: 760px) { 
     .mf-top-movies-slider{
       overflow: hidden;
+      min-height: 375px;
+
     }
   }

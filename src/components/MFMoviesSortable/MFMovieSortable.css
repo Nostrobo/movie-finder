@@ -6,4 +6,6 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 16px;
+    justify-content: center;
+    min-height: 1000px;
 }

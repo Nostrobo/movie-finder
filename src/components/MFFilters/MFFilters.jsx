@@ -25,7 +25,7 @@ const MFFilters = ({handleSetSortBy}) => {
             <div className="mf-sort-container">
                 <label htmlFor="sort-select">Trier par:</label>
                 <select name="" id="sort-select" onChange={(e)=>handleSetSortBy(e.target.value)}>
-                    <option value="alphabeticOrder">Ordre alphabetique</option>
+                    <option value="popularity">Popularité</option>
                     <option value="date">Date</option>
                 </select>
             </div>

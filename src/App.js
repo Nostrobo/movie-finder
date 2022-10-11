@@ -1,7 +1,6 @@
 import './App.css';
 import MFHeader from './components/MFHeader/MFHeader';
 import MFBody from './components/MFBody/MFBody';
-import MFFooter from './components/MFFooter/MFFooter';
 
 
 function App() {
@@ -10,7 +9,6 @@ function App() {
       <div className="mf-app-container">
         <MFHeader className="mf-header" />
         <MFBody className="mf-body" />
-        <MFFooter className="mf-footer" />
       </div>
     </div>
   );

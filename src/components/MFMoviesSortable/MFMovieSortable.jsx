@@ -3,42 +3,28 @@ import MFFilters from "../MFFilters/MFFilters";
 import MFMoviesFilteredList from "../MFMoviesFilteredList/MFMoviesFilteredList"
 import MFPagination from "../MFPagination/MFPagination";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import {api} from "../../api/api"
 
 const MFMovieSortable = () => {
 
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [sortBy, setSortBy] = useState({
-        type: "popularity",
-        order : "desc"
-
-    })
+    const [sortBy, setSortBy] = useState("popularity")
     const [pageSelected, setPageSelected] = useState(1)
     const [amountPage, setAmountPage] = useState()
 
 
-    const handleSetSortBy = value =>{
-        let newFilter = {};
-        switch (value){
-            case  'alphabeticOrder':
-                newFilter = {
-                    type:'original_title',
-                    order:"desc"
-                }
-                setSortBy(newFilter)
-                
-            break;
-            case  'date':
-                newFilter = {
-                    type:'release_date',
-                    order:"desc"
-                }
-                setSortBy(newFilter)
-            break;
+    const handleSetSortBy = value => {
+        console.log(value)
+        switch (value) {
+            case 'popularity':
+                setSortBy('popularity')
+                break;
+            case 'date':
+                setSortBy('date')
+                break;
             default: console.log("Unknown filter")
         }
-        setSortBy(setSortBy);
     }
 
     const handleSetPageSelected = value => {
@@ -47,35 +33,29 @@ const MFMovieSortable = () => {
 
     useEffect(() => {
         setIsLoading(true)
-        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${sortBy.type}.${sortBy.order}&page=${pageSelected}`, 	{
-			// headers: {
-			// 	'X-Rate-Limit': '2400',
-			// }
-		})
-            .then((res) => {
-                setMovies(res.data.results)
-                setAmountPage(res.data.total_pages)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-            .then(() => {
-                setIsLoading(false)
+        if(sortBy === 'popularity'){
+            api.getPopularMovies(setMovies, setAmountPage, setIsLoading, pageSelected);
+        }
 
-            })
-    }, [sortBy, pageSelected]);
+        if(sortBy === 'date'){
+            api.getLatestMovies(setMovies, setAmountPage, setIsLoading, pageSelected);
+        }
+    },[sortBy, pageSelected])
 
     return (
-        <div className="mf-movie-sortable-container">
+        <section className="mf-movie-sortable-container">
             <h2>Tous les films</h2>
-            <MFFilters handleSetSortBy={handleSetSortBy}/>
-          
-                    <div className="mf-movie-filtered-list-container">
-                        <MFMoviesFilteredList movies={movies} />
-                    </div>
-                        <MFPagination amountPage={amountPage} pageSelected={pageSelected} handleSetPageSelected={handleSetPageSelected}/>
-            
-        </div>
+            <MFFilters handleSetSortBy={handleSetSortBy} />
+            <div className="mf-movie-filtered-list-container">
+                {isLoading 
+                ? null
+                :<MFMoviesFilteredList movies={movies} />
+                }
+                
+            </div>
+            <MFPagination amountPage={amountPage} pageSelected={pageSelected} handleSetPageSelected={handleSetPageSelected} />
+
+        </section>
     )
 }
 

@@ -4,7 +4,9 @@ import React, { useEffect, useState, Suspense } from "react";
 import axios from "axios";
 import previousArrow from "../../assets/paginationpreviousarrow.svg"
 import nextArrow from "../../assets/paginationnextarrow.svg"
-const MFCardMovie = React.lazy(() => import("../MFCardMovie/MFCardMovie"))
+import {api} from "../../api/api";
+const MFCardMovie = React.lazy(() => import("../MFCardMovie/MFCardMovie"));
+
 
 const MFCardTopMovie = () => {
     let topMovieLength = 10;
@@ -16,22 +18,7 @@ const MFCardTopMovie = () => {
 
     useEffect(() => {
         setIsLoading(true)
-        axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}`)
-            .then((res) => {
-                let arr = res.data.results.slice(0, topMovieLength);
-                let arrDesktop = []
-                arrDesktop.push(arr.slice(0, 5))
-                arrDesktop.push(arr.slice(5, 10))
-
-                setTopMoviesDesktop(arrDesktop)
-                setTopMovies(arr)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-            .then(() => {
-                setIsLoading(false)
-            })
+        api.getTopRatedMovies(topMovieLength, setTopMoviesDesktop, setTopMovies, setIsLoading)
     }, []);
 
     const handlePrevious = (e) => {
